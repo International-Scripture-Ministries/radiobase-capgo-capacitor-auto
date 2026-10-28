@@ -1,0 +1,706 @@
+{
+  "api": {
+    "name": "AutoPlugin",
+    "slug": "autoplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "isAvailable",
+        "signature": "() => Promise<AutoAvailability>",
+        "parameters": [],
+        "returns": "Promise<AutoAvailability>",
+        "tags": [],
+        "docs": "Returns whether the current platform supports this plugin and whether a car is connected.",
+        "complexTypes": [
+          "AutoAvailability"
+        ],
+        "slug": "isavailable"
+      },
+      {
+        "name": "setRootTemplate",
+        "signature": "(options: AutoTemplateOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "AutoTemplateOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Sets the root car template. Use this to push phone app state to the car display.",
+        "complexTypes": [
+          "AutoTemplateOptions"
+        ],
+        "slug": "setroottemplate"
+      },
+      {
+        "name": "setState",
+        "signature": "(options: AutoStateOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "AutoStateOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Persists a JSON state slice that native Android Auto and CarPlay code can read even when the\nCapacitor WebView is not alive.",
+        "complexTypes": [
+          "AutoStateOptions"
+        ],
+        "slug": "setstate"
+      },
+      {
+        "name": "getState",
+        "signature": "(options: AutoStateKeyOptions) => Promise<AutoStateResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "AutoStateKeyOptions"
+          }
+        ],
+        "returns": "Promise<AutoStateResult>",
+        "tags": [],
+        "docs": "Reads a persisted JSON state slice.",
+        "complexTypes": [
+          "AutoStateResult",
+          "AutoStateKeyOptions"
+        ],
+        "slug": "getstate"
+      },
+      {
+        "name": "removeState",
+        "signature": "(options: AutoStateKeyOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "AutoStateKeyOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Removes a persisted JSON state slice.",
+        "complexTypes": [
+          "AutoStateKeyOptions"
+        ],
+        "slug": "removestate"
+      },
+      {
+        "name": "setTransientState",
+        "signature": "(options: AutoStateOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "AutoStateOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Stores a process-local JSON state slice and emits the same `stateChanged` event.",
+        "complexTypes": [
+          "AutoStateOptions"
+        ],
+        "slug": "settransientstate"
+      },
+      {
+        "name": "getTransientState",
+        "signature": "(options: AutoStateKeyOptions) => Promise<AutoStateResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "AutoStateKeyOptions"
+          }
+        ],
+        "returns": "Promise<AutoStateResult>",
+        "tags": [],
+        "docs": "Reads a process-local JSON state slice.",
+        "complexTypes": [
+          "AutoStateResult",
+          "AutoStateKeyOptions"
+        ],
+        "slug": "gettransientstate"
+      },
+      {
+        "name": "sendMessage",
+        "signature": "(options: AutoMessageOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "AutoMessageOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Sends an application-defined message to the native car bridge.",
+        "complexTypes": [
+          "AutoMessageOptions"
+        ],
+        "slug": "sendmessage"
+      },
+      {
+        "name": "getPluginVersion",
+        "signature": "() => Promise<PluginVersionResult>",
+        "parameters": [],
+        "returns": "Promise<PluginVersionResult>",
+        "tags": [],
+        "docs": "Returns the platform implementation version marker.",
+        "complexTypes": [
+          "PluginVersionResult"
+        ],
+        "slug": "getpluginversion"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'connectionChanged', listenerFunc: (event: AutoConnectionChangedEvent) => void) => Promise<PluginListenerHandle>",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'connectionChanged'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(event: AutoConnectionChangedEvent) => void"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle>",
+        "tags": [],
+        "docs": "Fired when the car host connects or disconnects.",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "AutoConnectionChangedEvent"
+        ],
+        "slug": "addlistenerconnectionchanged-"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'carAction', listenerFunc: (event: AutoActionEvent) => void) => Promise<PluginListenerHandle>",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'carAction'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(event: AutoActionEvent) => void"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle>",
+        "tags": [],
+        "docs": "Fired when the user selects an action row in the car UI.",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "AutoActionEvent"
+        ],
+        "slug": "addlistenercaraction-"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'messageReceived', listenerFunc: (event: AutoMessageEvent) => void) => Promise<PluginListenerHandle>",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'messageReceived'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(event: AutoMessageEvent) => void"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle>",
+        "tags": [],
+        "docs": "Fired for application-defined native car bridge messages.",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "AutoMessageEvent"
+        ],
+        "slug": "addlistenermessagereceived-"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'stateChanged', listenerFunc: (event: AutoStateChangedEvent) => void) => Promise<PluginListenerHandle>",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'stateChanged'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(event: AutoStateChangedEvent) => void"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle>",
+        "tags": [],
+        "docs": "Fired when a persisted or transient state value changes.",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "AutoStateChangedEvent"
+        ],
+        "slug": "addlistenerstatechanged-"
+      },
+      {
+        "name": "removeAllListeners",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "removealllisteners"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "AutoAvailability",
+      "slug": "autoavailability",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "available",
+          "tags": [],
+          "docs": "Whether the current platform ships a native car integration.",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "connected",
+          "tags": [],
+          "docs": "Whether a car host is currently connected to this app.",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "platform",
+          "tags": [],
+          "docs": "Platform that answered the request.",
+          "complexTypes": [
+            "AutoPlatform"
+          ],
+          "type": "AutoPlatform"
+        }
+      ]
+    },
+    {
+      "name": "AutoTemplateOptions",
+      "slug": "autotemplateoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "title",
+          "tags": [],
+          "docs": "Title shown at the top of the car template.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "sections",
+          "tags": [],
+          "docs": "Sections and rows to show in the car UI.",
+          "complexTypes": [
+            "AutoTemplateSection"
+          ],
+          "type": "AutoTemplateSection[]"
+        },
+        {
+          "name": "emptyText",
+          "tags": [],
+          "docs": "Text shown when there are no rows.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "AutoTemplateSection",
+      "slug": "autotemplatesection",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "header",
+          "tags": [],
+          "docs": "Optional section title. Supported by CarPlay; Android Auto currently flattens sections.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "items",
+          "tags": [],
+          "docs": "Rows to render in this section.",
+          "complexTypes": [
+            "AutoTemplateItem"
+          ],
+          "type": "AutoTemplateItem[]"
+        }
+      ]
+    },
+    {
+      "name": "AutoTemplateItem",
+      "slug": "autotemplateitem",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "id",
+          "tags": [],
+          "docs": "Stable action id sent back in the `carAction` event when the row is selected.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "tags": [],
+          "docs": "Primary row text.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "tags": [],
+          "docs": "Optional secondary row text.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "payload",
+          "tags": [],
+          "docs": "Optional value returned with the `carAction` event.",
+          "complexTypes": [
+            "AutoPayload"
+          ],
+          "type": "AutoPayload"
+        },
+        {
+          "name": "enabled",
+          "tags": [
+            {
+              "text": "true",
+              "name": "default"
+            }
+          ],
+          "docs": "Whether the row can be selected.",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        }
+      ]
+    },
+    {
+      "name": "AutoPayload",
+      "slug": "autopayload",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": []
+    },
+    {
+      "name": "AutoStateOptions",
+      "slug": "autostateoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "key",
+          "tags": [],
+          "docs": "Application-defined state key.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "tags": [],
+          "docs": "JSON object to make available to native car code.",
+          "complexTypes": [
+            "AutoPayload"
+          ],
+          "type": "AutoPayload"
+        }
+      ]
+    },
+    {
+      "name": "AutoStateResult",
+      "slug": "autostateresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "key",
+          "tags": [],
+          "docs": "Application-defined state key.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "tags": [],
+          "docs": "Current JSON value for the requested key. Omitted when the key has no value.",
+          "complexTypes": [
+            "AutoPayload"
+          ],
+          "type": "AutoPayload"
+        }
+      ]
+    },
+    {
+      "name": "AutoStateKeyOptions",
+      "slug": "autostatekeyoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "key",
+          "tags": [],
+          "docs": "Application-defined state key.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "AutoMessageOptions",
+      "slug": "automessageoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "type",
+          "tags": [],
+          "docs": "Application-defined message type.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "payload",
+          "tags": [],
+          "docs": "Optional application-defined payload.",
+          "complexTypes": [
+            "AutoPayload"
+          ],
+          "type": "AutoPayload"
+        }
+      ]
+    },
+    {
+      "name": "PluginVersionResult",
+      "slug": "pluginversionresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "version",
+          "tags": [],
+          "docs": "Version identifier returned by the platform implementation.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "PluginListenerHandle",
+      "slug": "pluginlistenerhandle",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "remove",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "() => Promise<void>"
+        }
+      ]
+    },
+    {
+      "name": "AutoConnectionChangedEvent",
+      "slug": "autoconnectionchangedevent",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "connected",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "platform",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "AutoPlatform"
+          ],
+          "type": "AutoPlatform"
+        }
+      ]
+    },
+    {
+      "name": "AutoActionEvent",
+      "slug": "autoactionevent",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "id",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "payload",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "AutoPayload"
+          ],
+          "type": "AutoPayload"
+        },
+        {
+          "name": "platform",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "AutoPlatform"
+          ],
+          "type": "AutoPlatform"
+        }
+      ]
+    },
+    {
+      "name": "AutoMessageEvent",
+      "slug": "automessageevent",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "type",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "payload",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "AutoPayload"
+          ],
+          "type": "AutoPayload"
+        },
+        {
+          "name": "platform",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "AutoPlatform"
+          ],
+          "type": "AutoPlatform"
+        }
+      ]
+    },
+    {
+      "name": "AutoStateChangedEvent",
+      "slug": "autostatechangedevent",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "key",
+          "tags": [],
+          "docs": "Application-defined state key.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "tags": [],
+          "docs": "Current JSON value for the updated key. Omitted when the key has no value.",
+          "complexTypes": [
+            "AutoPayload"
+          ],
+          "type": "AutoPayload"
+        },
+        {
+          "name": "platform",
+          "tags": [],
+          "docs": "Platform that emitted the state update.",
+          "complexTypes": [
+            "AutoPlatform"
+          ],
+          "type": "AutoPlatform"
+        },
+        {
+          "name": "transient",
+          "tags": [],
+          "docs": "Whether the update came from transient in-memory state instead of persisted state.",
+          "complexTypes": [],
+          "type": "boolean"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [
+    {
+      "name": "AutoPlatform",
+      "slug": "autoplatform",
+      "docs": "",
+      "types": [
+        {
+          "text": "'ios'",
+          "complexTypes": []
+        },
+        {
+          "text": "'android'",
+          "complexTypes": []
+        },
+        {
+          "text": "'web'",
+          "complexTypes": []
+        }
+      ]
+    }
+  ],
+  "pluginConfigs": []
+}
